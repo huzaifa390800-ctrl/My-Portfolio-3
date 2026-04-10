@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Muhammad Anas Soomro | Front-End Developer Portfolio</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      
+    }
+
+    :root {
+      --bg-page: #f9fafc;
+      --surface: #ffffff;
+      --surface-soft: #f3f4f6;
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --border-light: #e5e7eb;
+      --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.02);
+      --gradient-bg: linear-gradient(135deg, #eef2ff 0%, #ffffff 100%);
+      --skill-badge: #e0e7ff;
+      --code-icon: #3b82f6;
+    }
+
+    body.dark {
+      --bg-page: #0a0c10;
+      --surface: #14181f;
+      --surface-soft: #1e2430;
+      --text-primary: #edf2f7;
+      --text-secondary: #a0afc3;
+      --border-light: #2d3748;
+      --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.4);
+      --gradient-bg: linear-gradient(145deg, #0f1219 0%, #11161f 100%);
+      --skill-badge: #2d3a5e;
+    }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  transition: background 0.3s ease, color 0.2s ease;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+
+  margin: 0; /* ye important hai */
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto; /* 🔥 center karne ka main code */
+  padding: 0 1.5rem;
+}
+    /* glass navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      background: rgba(var(--bg-page-rgb), 0.7);
+      background-color: var(--surface);
+      border-bottom: 1px solid var(--border-light);
+      padding: 1rem 0;
+      z-index: 100;
+      transition: background 0.2s;
+    }
+    body.dark .navbar {
+      background: rgba(20, 24, 31, 0.9);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .theme-toggle {
+      background: var(--surface-soft);
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+      color: var(--text-primary);
+    }
+
+    /* buttons */
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      text-decoration: none !important;
+
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px -8px rgba(37, 99, 235, 0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+      padding: 0.7rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: 0.2s;
+      text-decoration: none !important;
+      cursor: pointer;
+    }
+    .btn-outline:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* hero section */
+    .hero {
+      padding: 4rem 0 2rem;
+    }
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .hero-highlight {
+      color: var(--accent);
+    }
+    .hero-badge {
+      background: var(--skill-badge);
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+    .avatar-icon {
+      font-size: 8rem;
+      color: var(--accent);
+      background: var(--surface-soft);
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--card-shadow);
+    }
+
+    /* section styles */
+    .section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    .grid-2cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: var(--surface);
+      border-radius: 28px;
+      padding: 1.8rem;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-light);
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.2);
+    }
+    .skill-tag {
+      background: var(--skill-badge);
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      margin: 0.25rem;
+    }
+    .flex-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1rem 0;
+      color: var(--text-secondary);
+    }
+    .info-row i {
+      width: 24px;
+      color: var(--accent);
+    }
+    /* project card */
+    .project-card {
+      background: var(--surface);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: 0.2s;
+    }
+    .project-content {
+      padding: 1.5rem;
+    }
+    .project-icons i {
+      margin-right: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+
+    /* form */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 1rem;
+      background: var(--surface-soft);
+      border: 1px solid var(--border-light);
+      border-radius: 24px;
+      font-family: inherit;
+      color: var(--text-primary);
+      transition: 0.2s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+    .contact-flex {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      border: none;
+      width: 100%;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-light);
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2.2rem; }
+      .nav-links { gap: 1rem; }
+      .container { padding: 0 1rem; }
+      .section { padding: 3rem 0; }
+    }
+    /* hamburger hidden on desktop */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* mobile styles */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: var(--surface);
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    
+    display: none; /* hidden by default */
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+  </style>
+</head>
+<body><nav class="navbar">
+  <div class="container nav-container">
+    
+    <div class="logo">Anas.dev</div>
+
+    <!-- 🔥 Hamburger -->
+    <div class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Links -->
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Edu & Cert</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+
+  </div>
+</nav>
+<section id="home" class="hero reveal">
+  <div class="container">
+    <div class="hero-grid">
+ <!-- Hero Section -->
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge"><i class="fas fa-code"></i> Certified Front-End Developer</div>
+          <h1>Muhammad Anas <span class="hero-highlight">Soomro</span></h1>
+          <p style="font-size: 1.2rem; margin-top: 0.8rem; color: var(--text-secondary);">Building stunning, responsive & interactive web experiences</p>
+          <div class="hero-stats">
+            <div><i class="fas fa-calendar-alt"></i> Feb 02, 2008</div>
+            <div><i class="fas fa-map-marker-alt"></i> Karachi, PK</div>
+          </div>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+            <a href="#contact" class="btn-primary "><i class="fab fa-whatsapp"></i> Contact on WhatsApp</a>
+            <a href="#projects" class="btn-outline "><i class="fas fa-eye"></i> View Work</a>
+          </div>
+        </div>
+        <div class="avatar-icon">
+          <i class="fas fa-user-astronaut" style="font-size: 5rem;"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- About + Objective & Personal Data -->
+    <section id="about" class="section reveal">
+      <h2 class="section-title">About Me</h2>
+      <div class="grid-2cols">
+        <div class="card">
+          <h3><i class="fas fa-user"></i> Personal Details</h3>
+          <div class="info-row"><i class="fas fa-user-circle"></i> <strong>Full Name:</strong> Muhammad Anas Soomro</div>
+          <div class="info-row"><i class="fas fa-venus-mars"></i> <strong>Gender:</strong> Male</div>
+          <div class="info-row"><i class="fas fa-birthday-cake"></i> <strong>Birth:</strong> February 2, 2008</div>
+          <div class="info-row"><i class="fas fa-map-pin"></i> <strong>Location:</strong> Karachi, Pakistan</div>
+          <div class="info-row"><i class="fas fa-envelope"></i> <strong>Email:</strong> anassoomro9890@gmail.com</div>
+          <div class="info-row"><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> +92 304 3964853</div>
+          <div class="info-row"><i class="fas fa-language"></i> <strong>Languages:</strong> Urdu, English</div>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-bullseye"></i> Professional Objective</h3>
+          <p style="margin-top: 0.8rem; line-height: 1.6;">A skilled Frontend Developer with expertise in HTML, CSS, JavaScript, and modern frameworks like React.js. I create responsive, user-friendly, and visually appealing web interfaces with a focus on performance and clean code. Passionate about UI/UX and always eager to learn new technologies to build better digital experiences.</p>
+          <div style="margin-top: 1.5rem;">
+            <span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span>
+            <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+            <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+            <span class="skill-tag"><i class="fas fa-database"></i> JSON</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section reveal">
+      <h2 class="section-title">Tech Arsenal</h2>
+      <div class="card" style="background: var(--surface);">
+        <div class="flex-skills">
+          <span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span>
+          <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+          <span class="skill-tag"><i class="fab fa-js"></i> JavaScript (ES6+)</span>
+          <span class="skill-tag"><i class="fas fa-code"></i> JSON</span>
+          <span class="skill-tag"><i class="fab fa-bootstrap"></i> Bootstrap 5</span>
+          <span class="skill-tag"><i class="fab fa-github"></i> GitHub</span>
+          <span class="skill-tag"><i class="fab fa-react"></i> React.js (Learning/Familiar)</span>
+        </div>
+        <p style="margin-top: 1.2rem; color: var(--text-secondary);">Building interactive interfaces, responsive design, version control & modern frontend workflows.</p>
+      </div>
+    </section>
+
+    <!-- Education + Certificates + Courses -->
+    <section id="education" class="section reveal">
+      <h2 class="section-title">Education & Credentials</h2>
+      <div class="grid-2cols">
+        <!-- Education -->
+        <div class="card">
+          <i class="fas fa-graduation-cap" style="font-size: 2rem; color: var(--accent);"></i>
+          <h3 style="margin: 0.8rem 0 0.5rem;">Matriculation</h3>
+          <p><strong>Airport Security Force, Karachi</strong></p>
+          <p style="color: var(--text-secondary);">Fundamental principles of computer science including basic programming concepts and logic development.</p>
+        </div>
+        <!-- Certificates -->
+        <div class="card">
+          <i class="fas fa-certificate" style="font-size: 2rem; color: var(--accent);"></i>
+          <h3 style="margin: 0.8rem 0 0.5rem;">Professional Certificate</h3>
+          <p><strong>✅ Certified Front-End Developer</strong></p>
+          <p>Validated expertise in modern front-end technologies, responsive design & cross-browser compatibility.</p>
+          <div style="margin-top: 0.7rem;"><span class="skill-tag"><i class="fas fa-trophy"></i> Front-End Developer</span></div>
+        </div>
+        <!-- Courses -->
+        <div class="card">
+          <i class="fas fa-laptop-code" style="font-size: 2rem; color: var(--accent);"></i>
+          <h3 style="margin: 0.8rem 0 0.5rem;">HDSE Student</h3>
+          <p>Advanced Diploma in Software Engineering track.</p>
+          <p style="color: var(--text-secondary);">Developed basic coding skills through hands-on programming exercises, real-world mini projects & logic building.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Projects Section (Showcasing his skills) -->
+    <section id="projects" class="section reveal">
+      <h2 class="section-title">Creative Showcase</h2>
+      <div class="grid-2cols">
+        <div class="project-card card">
+          <div class="project-content">
+            <i class="fas fa-cloud-sun" style="font-size: 2rem; color: var(--accent);"></i>
+            <h3>Weather Pulse App</h3>
+            <p>Dynamic weather dashboard using JavaScript & Fetch API, JSON data handling. Responsive and real-time.</p>
+            <div class="project-icons"><i class="fab fa-html5"></i> HTML5 <i class="fab fa-css3-alt"></i> CSS <i class="fab fa-js"></i> JS + JSON</div>
+          </div>
+        </div>
+        <div class="project-card card">
+          <div class="project-content">
+            <i class="fas fa-store" style="font-size: 2rem; color: var(--accent);"></i>
+            <h3>Modern E‑Commerce UI</h3>
+            <p>Fully responsive product grid with Bootstrap 5, interactive cart simulation & modern layout.</p>
+            <div class="project-icons"><i class="fab fa-bootstrap"></i> Bootstrap <i class="fab fa-css3"></i> CSS3</div>
+          </div>
+        </div>
+        <div class="project-card card">
+          <div class="project-content">
+            <i class="fas fa-tasks" style="font-size: 2rem; color: var(--accent);"></i>
+            <h3>TaskFlow Manager</h3>
+            <p>Interactive to-do app with local storage, dynamic DOM manipulation, clean UI/UX design.</p>
+            <div class="project-icons"><i class="fab fa-js"></i> JavaScript <i class="fab fa-github"></i> Git workflow</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact + WhatsApp Integration -->
+    <section id="contact" class="section reveal">
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="grid-2cols">
+        <div class="card">
+          <h3><i class="fas fa-paper-plane"></i> Send a Message</h3>
+          <p style="margin-bottom: 1.2rem;">Your message will be directly received on my WhatsApp: <strong>+92 304 3964853</strong></p>
+          <form id="whatsappForm">
+            <div class="form-group">
+              <input type="text" id="nameInput" placeholder="Your Full Name *" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="emailInput" placeholder="Email Address *" required>
+            </div>
+            <div class="form-group">
+              <textarea rows="4" id="messageInput" placeholder="Project idea, collaboration or feedback... *" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary whatsapp-btn" style="width:100%;"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+          </form>
+          <p style="font-size: 0.8rem; margin-top: 1rem;"><i class="fas fa-shield-alt"></i> Your data will be securely shared via WhatsApp chat.</p>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-address-card"></i> Direct Contact</h3>
+          <div class="info-row"><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> 0304 3964853</div>
+          <div class="info-row"><i class="fas fa-envelope"></i> anassoomro9890@gmail.com</div>
+          <div class="info-row"><i class="fab fa-github"></i> <strong>GitHub:</strong> github.com/anas-frontend (portfolio)</div>
+          <div class="info-row"><i class="fas fa-map-marker-alt"></i> Karachi, Pakistan</div>
+          <hr style="margin: 1rem 0; border-color: var(--border-light);">
+          <a href="https://wa.me/923043964853?text=Hi%20Anas%2C%20I%20viewed%20your%20portfolio!" target="_blank" class="btn-outline" style="display: inline-flex; gap: 8px; width: 100%; justify-content: center;"><i class="fab fa-whatsapp"></i> Chat instantly on WhatsApp</a>
+        </div>
+      </div>
+</section>
+
+  <footer>
+    <p>© 2025 Muhammad Anas Soomro — Front-End Developer. Built with <i class="fas fa-heart" style="color: #ef4444;"></i> and modern code.</p>
+  </footer>    
+</div>
+
+  </div>
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    // ------------------- DARK / LIGHT THEME -------------------
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const icon = themeToggle.querySelector('i');
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        body.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    }
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      setTheme('dark');
+    } else if (savedTheme === 'light') {
+      setTheme('light');
+    } else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setTheme('dark');
+      } else {
+        setTheme('light');
+      }
+    }
+    themeToggle.addEventListener('click', () => {
+      if (body.classList.contains('dark')) {
+        setTheme('light');
+      } else {
+        setTheme('dark');
+      }
+    });
+
+    // ------------------- SCROLL REVEAL ANIMATION -------------------
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+    revealElements.forEach(el => observer.observe(el));
+
+    // ------------------- WHATSAPP FORM HANDLER (CV Number: 03043964853 => 923043964853) -------------------
+    const whatsappNumber = "923043964853";  // international format without '+'
+    const form = document.getElementById('whatsappForm');
+    
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('nameInput').value.trim();
+      const email = document.getElementById('emailInput').value.trim();
+      const message = document.getElementById('messageInput').value.trim();
+      
+      if (!name || !email || !message) {
+        alert('❌ Please fill all fields (Name, Email, Message) before sending.');
+        return;
+      }
+      if (!email.includes('@') || !email.includes('.')) {
+        alert('⚠️ Please enter a valid email address.');
+        return;
+      }
+      
+      // Compose professional message for WhatsApp
+      const whatsappMsg = `*New Portfolio Message*%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Message:* ${encodeURIComponent(message)}%0A%0A📩 From Anas Portfolio Contact Form`;
+      const url = `https://wa.me/${whatsappNumber}?text=${whatsappMsg}`;
+      window.open(url, '_blank');
+      
+      // Optional: show success hint
+      alert(`✅ Redirecting to WhatsApp...\nMessage will be sent to ${whatsappNumber}.`);
+      form.reset();
+    });
+
+    // smooth anchor scrolling
+    document.querySelectorAll('.nav-links a, .btn-primary[href="#contact"], .btn-outline[href="#projects"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const hash = this.getAttribute('href');
+        if (hash && hash.startsWith('#')) {
+          e.preventDefault();
+          const targetId = hash.substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+    
+    // Additional: direct contact chat button handler (already link)
+    // Ensure all CV data is present dynamically
+    console.log('Portfolio with integrated WhatsApp form — data from Muhammad Anas Soomro CV');
+    const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+document.querySelectorAll('#navLinks a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+});
+  </script>
+</body>
+</html>
